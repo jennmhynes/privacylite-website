@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Lite | Jenn Hynes — Plain-Language Privacy Consulting, Ontario</title>
+  <meta name="description" content="Fifteen years inside Ontario's health systems, government privacy, and enterprise compliance — brought to the clinics and small businesses that need it most." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2744;
+      --gold: #c9a227;
+      --paper: #faf7f0;
+      --ink: #2b3240;
+      --muted: #5a6473;
+      --muted-dark: #4a5360;
+      --border: rgba(26,39,68,.08);
+      --gold-line: rgba(201,162,39,.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .display { font-family: 'Fraunces', Georgia, serif; }
+    .sans { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+
+    .lift {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(26,39,68,.10);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 0 5%;
+      background: rgba(250,247,240,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+    }
+
+    .logo-text {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.875rem;
+      color: var(--navy);
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    nav a:hover { opacity: 0.6; }
+
+    .nav-cta {
+      padding: 0.375rem 1rem;
+      border-radius: 9999px;
+      background: var(--navy) !important;
+      color: white !important;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 0 5%;
+    }
+
+    .section-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 3.5rem 0;
+    }
+
+    @media (min-width: 640px) {
+      .section-inner { padding: 5rem 0; }
+    }
+
+    .section-label {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.25rem, 6vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+    }
+
+    .hero-eyebrow {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-body {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #cdd6e6;
+      max-width: 46rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    .btn-gold:hover { opacity: 0.88; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,.3);
+      color: white;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,.6); }
+
+    .btn-navy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      background: var(--navy);
+      color: white;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    .btn-navy:hover { opacity: 0.85; }
+
+    .btn-outline-navy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .btn-outline-navy:hover { background: rgba(26,39,68,.05); }
+
+    /* ── WHY CARDS ── */
+    .why-body {
+      max-width: 46rem;
+      margin-bottom: 2rem;
+    }
+
+    .why-body p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .card h4 {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .card p {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 7px;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background: var(--gold-line);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--paper);
+    }
+
+    .timeline-dot.current {
+      background: var(--gold);
+    }
+
+    .timeline-year {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.375rem;
+    }
+
+    .timeline-body {
+      color: var(--muted-dark);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 44rem;
+    }
+
+    /* ── SYSTEMS ── */
+    .systems-section { background: var(--paper); }
+
+    .systems-intro {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 44rem;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      color: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    .check-icon {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    /* ── TOOLS ── */
+    .tools-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .tools-intro {
+      font-size: 1.1rem;
+      color: #cdd6e6;
+      max-width: 44rem;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+    }
+
+    .tool-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .tool-card h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-card p {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.825rem;
+      color: #cdd6e6;
+      line-height: 1.7;
+    }
+
+    /* ── CREDENTIALS ── */
+    .creds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      color: var(--navy);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    /* ── CTA ── */
+    .cta-section { background: white; }
+
+    .cta-box {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .cta-box { padding: 3rem; }
+    }
+
+    .cta-box h2 { margin-bottom: 1rem; color: var(--navy); }
+
+    .cta-body {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin: 0 auto 1.75rem;
+      line-height: 1.75;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: #aeb8c9;
+      padding: 2.5rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.875rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-logo-text {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer-tagline {
+      max-width: 40rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: #7e8aa0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .cta-box { padding: 2rem 1.25rem; }
+    }
+
+    /* ── SVG ICONS (inline) ── */
+    svg { display: inline-block; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="logo-text">Privacy Lite</span>
+    </a>
+    <nav>
+      <a href="#why">Why</a>
+      <a href="#journey">Experience</a>
+      <a href="#tools">Tools</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="section hero">
+  <div class="section-inner">
+    <div class="hero-eyebrow">Privacy, in plain language</div>
+    <h1>Enterprise-grade privacy,<br />made for the rest of us.</h1>
+    <p class="hero-body">
+      I'm Jenn Hynes. For fifteen years I've worked inside the systems your information flows through — hospital records, provincial health repositories, the privacy impact assessments behind public-health infrastructure. Privacy Lite brings that rigor to small clinics, practitioners, and businesses — without the full-time privacy officer.
+    </p>
+    <div class="hero-actions">
+      <a href="#tools" class="btn-gold">
+        Explore the tools
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#why" class="btn-ghost">Why I built this</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" id="why">
+  <div class="section-inner">
+    <div class="section-label">The why</div>
+    <h2>I've seen what good privacy looks like at the top. Most small organizations can't reach it.</h2>
+    <div class="why-body">
+      <p>Inside hospitals and government, privacy is a team, a budget, and a stack of assessments. A solo clinic or a growing business has none of that — yet they hold some of the most sensitive information there is, and the same laws apply to them.</p>
+      <p>That gap is where breaches happen, and it's where I've spent my career on the other side. Privacy Lite exists to close it: the same standards I've applied to provincial health systems, translated into plain language and right-sized tools you can actually use.</p>
+    </div>
+    <div class="card-grid-3">
+      <div class="card lift">
+        <h4>Grounded in real enforcement</h4>
+        <p>Built on PHIPA, FIPPA, PIPEDA, IPC orders, and the standards your college expects.</p>
+      </div>
+      <div class="card lift">
+        <h4>Plain language, always</h4>
+        <p>Complex obligations made clear — without dumbing them down.</p>
+      </div>
+      <div class="card lift">
+        <h4>Right-sized</h4>
+        <p>Practical tools and reviews scaled to a small practice, not a hospital network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section" id="journey" style="background: white;">
+  <div class="section-inner">
+    <div class="section-label">The evolution</div>
+    <h2>A career spent learning the systems from the inside.</h2>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1998–2002</div>
+        <div class="timeline-role">Insurance Technology — Building Underwriting Systems</div>
+        <p class="timeline-body">Part of the early wave of insurance tech transformation. Built the backend systems that turned manual spreadsheet-based underwriting into instant quotes — learning how structured data and well-mapped processes could transform an industry.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1998–2002</div>
+        <div class="timeline-role">Sherwood International Inc. — Executive &amp; Administrative Assistant</div>
+        <p class="timeline-body">Supported C-suite in a gatekeeper role, handling board materials, corporate records, and executive-level information — learned the stakes of judgment and discretion with sensitive data.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1999–2005</div>
+        <div class="timeline-role">On the Curve Hot Stove &amp; Wine Bar — Manager</div>
+        <p class="timeline-body">Ran point on restaurant operations — inventory, financials, safety, staffing. Integrated data from multiple systems to keep the business tight and the experience high, seeing how the same principles apply from credit cards to health records.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2004–2006</div>
+        <div class="timeline-role">Royal LePage — Sales Representative</div>
+        <p class="timeline-body">Worked directly with clients and their personal information in a regulated industry. Developed an appreciation for the trust people place in advisors to steward sensitive details responsibly at every stage.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2007–2008</div>
+        <div class="timeline-role">Pfizer Canada — Office Manager</div>
+        <p class="timeline-body">Managed administrative functions for a large pharmaceutical company. Owned EHS data — certifying employees on hazardous materials, maintaining SDS, ensuring regulatory compliance. Saw firsthand how data management was the backbone of a safe, audit-ready workplace.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2009–2011</div>
+        <div class="timeline-role">Infrastructure Ontario — FIPPA &amp; Records</div>
+        <p class="timeline-body">Move into the public sector: handling Freedom of Information requests, records lifecycles, and privacy matters before the Information and Privacy Commissioner.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2011–2016</div>
+        <div class="timeline-role">Hospital Sector — FOI &amp; Privacy Specialist</div>
+        <p class="timeline-body">William Osler, Central West CCAC and Headwaters. FIPPA and CASL in the hospital world, privacy impact assessments across EMRs and clinical assessment tools, and breach investigation under PHIPA.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2016–2021</div>
+        <div class="timeline-role">Trillium Health Partners &amp; Ontario Telemedicine Network</div>
+        <p class="timeline-body">Privacy Analyst, then Privacy Specialist, then Lead Privacy Advisor on a hospital-wide Epic implementation — building audit and compliance, use cases, and remediation as a Health Information Custodian.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2021–present</div>
+        <div class="timeline-role">Ministry of Health — PIA Specialist</div>
+        <p class="timeline-body">Privacy impact assessments behind provincial public-health infrastructure: the Immunization Repository, COVID-19 vaccine systems, and Case &amp; Contact Management — mapping how personal health information is collected, used, disclosed, and protected.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2013–2023</div>
+        <div class="timeline-role">Condominium Board of Directors</div>
+        <p class="timeline-body">A decade of exposure to household-level privacy — keeping resident information secure, handling sensitive complaints and payment issues, and navigating the occasional privacy incident through a Condominium Act lens.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-year">Now</div>
+        <div class="timeline-role">Privacy Lite</div>
+        <p class="timeline-body">Bringing that same enterprise rigor to the clinics, practitioners, and small businesses that can't justify a full-time privacy officer — in plain language.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section class="section systems-section" id="systems">
+  <div class="section-inner">
+    <div class="section-label">The systems</div>
+    <h2>The infrastructure I've worked behind.</h2>
+    <p class="systems-intro">When I tell a clinic where their data is exposed, it's because I've assessed the systems that data lives in — at the provincial scale.</p>
+    <div class="check-grid">
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Hospital Information Systems (Epic)
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Electronic Medical Records (EMRs)
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Provincial Immunization Repository
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        COVID-19 vaccine &amp; inventory systems
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Case &amp; Contact Management (CCM)
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Clinical assessment tools (IAR, CCT, REACH, DI-r, CGTA)
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        ISO 27000 series &amp; CSA Model Code
+      </div>
+      <div class="check-item">
+        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        PHIPA · FIPPA · PIPEDA · CASL
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section tools-section" id="tools">
+  <div class="section-inner">
+    <div class="section-label" style="color: var(--gold);">What I've built</div>
+    <h2 style="color: white;">Tools that do the heavy lifting.</h2>
+    <p class="tools-intro">Self-serve assessments that produce real, usable documents — grounded in the same legislation and enforcement I work with every day.</p>
+    <div class="tools-grid">
+      <div class="tool-card lift">
+        <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <h3>Privacy Readiness Engine</h3>
+        <p>Answer a short assessment, get a compliance tier, and generate a privacy policy plus a 30/60/90-day roadmap — tailored to your jurisdiction.</p>
+      </div>
+      <div class="tool-card lift">
+        <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2" ry="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="11" y2="16"/></svg>
+        <h3>Privacy Impact Assessment</h3>
+        <p>A structured PIA with a background severity calculation, cross-referenced to your regulatory college and governing legislation.</p>
+      </div>
+      <div class="tool-card lift">
+        <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <h3>Clinic Accountability Review</h3>
+        <p>A behavioural checklist that finds the gap between what your policy says and what actually happens day to day.</p>
+      </div>
+      <div class="tool-card lift">
+        <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Record Retention Guide</h3>
+        <p>Profession-by-profession retention, destruction, and storage requirements for Ontario and Canada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="section" id="credentials">
+  <div class="section-inner">
+    <div class="section-label">Training &amp; credentials</div>
+    <div class="creds-grid">
+      <div class="cred-item">
+        <svg class="check-icon" style="margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        IAPP-trained — formerly CIPP/C (Certified Information Privacy Professional, Canada)
+      </div>
+      <div class="cred-item">
+        <svg class="check-icon" style="margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        IAPP-trained — formerly CIPM (Certified Information Privacy Manager)
+      </div>
+      <div class="cred-item">
+        <svg class="check-icon" style="margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        University of Toronto — Certificate, Freedom of Information &amp; Privacy Protection
+      </div>
+      <div class="cred-item">
+        <svg class="check-icon" style="margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        University of Toronto — Certificate, Records Management Fundamentals
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section cta-section" id="contact">
+  <div class="section-inner">
+    <div class="cta-box">
+      <h2>Not sure where you stand?</h2>
+      <p class="cta-body">Start with a tool, or reach out for a plain-language conversation about your practice. No jargon, no scare tactics — just a clear picture of where you are and what to do next.</p>
+      <div class="cta-actions">
+        <a href="#tools" class="btn-navy">
+          Try a tool
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="mailto:hello@privacylite.ca" class="btn-outline-navy">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="footer-logo-text">Privacy Lite</span>
+    </div>
+    <p class="footer-tagline">Plain-language privacy consulting for Ontario and Canadian clinics, practitioners, and small businesses. Privacy Lite | Jennifer Hynes | privacylite.ca</p>
+    <p class="footer-disclaimer">The information and tools provided are educational support, not legal advice. Verify requirements with qualified legal counsel and your regulatory college.</p>
+  </div>
+</footer>
+
+</body>
+</html>
